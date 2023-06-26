@@ -27,15 +27,31 @@ struct ContentView: View {
         NavigationView {
             List(selection: $singleSelection) {
                 ForEach(tasks) { task in
-                    Section(header: Text("Random \(task.name) cool frase")) {
+                    Section(header: Text(task.name)) {
                         ForEach(task.notes) { note in
                             HStack {
                                 Text(note.title)
+                                    .swipeActions(edge: .leading) {
+                                        Button(role: .destructive) {
+                                            // Todo
+                                        } label: {
+                                            Label("Done", systemImage: "archivebox.fill")
+                                        }
+                                        .tint(.green)
+                                    }
+                                    .swipeActions(edge: .trailing) {
+                                        Button(role: .destructive) {
+                                            // Todo
+                                        } label: {
+                                            Label("Done", systemImage: "archivebox.fill")
+                                        }
+                                        .tint(.green)
+                                    }
                             }
                         }
                         
                         Button(action: {
-                           // add to an array
+                            // Todo
                         }) {
                             Text("Add")
                         }
